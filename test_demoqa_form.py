@@ -1,6 +1,7 @@
 from selene.support.conditions.have import texts
 
 from Form import PracticeForm
+from Hobbies import Hobbies
 from Table import Table
 from TestData import TestData
 
@@ -15,8 +16,8 @@ def test_practice_form(open_practice_form):
     form.info.set_birth_date(day=TestData.DAY_OF_BIRTH,
                              month=TestData.MONTH_OF_BIRTH,
                              year=TestData.YEAR_OF_BIRTH)
-    form.info.set_subjects(TestData.SUBJECT_MATHS, TestData.SUBJECT_ENGLISH)
-    form.info.set_hobbies(TestData.HOBBY_READING, TestData.HOBBY_MUSIC)
+    form.info.set_subjects(*TestData.SUBJECTS)
+    form.info.set_hobbies(*TestData.HOBBIES)
     form.info.set_avatar(avatar=TestData.AVATAR)
     form.address.set_current(address=TestData.ADDRESS)
     form.address.set_state(state=TestData.STATE)

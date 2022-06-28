@@ -3,8 +3,10 @@ from selene.support.shared import browser
 
 from Checkbox import Checkbox
 from DatePicker import DatePicker
+from Hobbies import Hobbies
 from RadioButton import RadioButton
 from Input import Input
+from Subjects import Subjects
 
 
 class PersonInfo:
@@ -16,14 +18,14 @@ class PersonInfo:
     def set_gender(self, gender):
         RadioButton(text=gender).toggle()
 
-    def set_hobbies(self, *hobbies):
+    def set_hobbies(self, *hobbies: Hobbies):
         for hobby in hobbies:
-            Checkbox(text=hobby).toggle()
+            Checkbox(text=hobby.value).toggle()
 
-    def set_subjects(self, *subjects):
+    def set_subjects(self, *subjects: Subjects):
         browser.element('div[class*=value-container]').should(be.visible).click()
         for subject in subjects:
-            self.subjects_input.set_value_and_press_enter(value=subject)
+            self.subjects_input.set_value_and_press_enter(value=subject.value)
 
     def set_name(self, first_name, last_name):
         self.first_name.set_value(value=first_name)

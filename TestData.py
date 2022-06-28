@@ -1,21 +1,22 @@
 import os
 
+from Gender import Gender
+from Hobbies import Hobbies
 from Months import Months
+from Subjects import Subjects
 
 
 class TestData:
     FIRST_NAME = 'John'
     LAST_NAME = 'Richardson'
     EMAIL = 'john.richardson@yahoo.com'
-    GENDER = 'Male'
+    GENDER = Gender.MALE.value
     MOBILE_PHONE = '9999999999'
     DAY_OF_BIRTH = '20'
-    MONTH_OF_BIRTH = str(Months.NOVEMBER.value)
+    MONTH_OF_BIRTH = Months.NOVEMBER.value
     YEAR_OF_BIRTH = '1965'
-    SUBJECT_MATHS = 'Maths'
-    SUBJECT_ENGLISH = 'English'
-    HOBBY_READING = 'Reading'
-    HOBBY_MUSIC = 'Music'
+    SUBJECTS = (Subjects.MATHS, Subjects.ENGLISH)
+    HOBBIES = (Hobbies.READING, Hobbies.MUSIC)
     AVATAR = os.getcwd() + '/pic.jpg'
     ADDRESS = 'USA, New-York, 15 ave. 17'
     STATE = 'NCR'
