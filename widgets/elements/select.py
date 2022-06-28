@@ -1,6 +1,6 @@
 from selene import be
-from selene.support.shared import browser
 from selenium.webdriver.support.select import Select
+from selene.support.shared import browser
 
 
 class CustomSelect:
@@ -11,8 +11,13 @@ class CustomSelect:
         select = Select(browser.driver.find_element_by_css_selector(self.element))
         select.select_by_value(value=value)
 
-    def by_text(self, text):
+
+class Dropdown:
+    def __init__(self, element):
+        self.element = element
+
+    def select_by_text(self, text):
         text_selector = f"//*[text()='{text}']"
-        select = browser.find(self.element).should(be.visible)
-        select.click()
+        dropdown = browser.element(self.element).should(be.visible)
+        dropdown.click()
         browser.element(text_selector).should(be.visible).click()

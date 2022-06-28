@@ -6,6 +6,6 @@ class RadioButton:
     def __init__(self, text):
         self.text = text
 
-    def toggle(self):
+    def select(self):
         label = f"//label[text()='{self.text}']"
         browser.element(css_or_xpath_or_by=label).should(be.visible).click()

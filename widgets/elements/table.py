@@ -10,3 +10,6 @@ class Table:
 
     def rows(self):
         return self.body().ss('tr')
+
+    def cells(self):
+        return self.body().ss('td')

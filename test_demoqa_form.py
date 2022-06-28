@@ -1,37 +1,39 @@
-from selene.support.conditions.have import texts
+from selene import have
 
-from Form import PracticeForm
-from Hobbies import Hobbies
-from Table import Table
-from TestData import TestData
+from testdata.address import Address
+from testdata.expected import Expected
+from testdata.profile import Profile, Contacts, Birthday
+from widgets.elements.table import Table
+from widgets.form import PracticeForm
 
 form = PracticeForm()
 
 
 def test_practice_form(open_practice_form):
-    form.info.set_name(first_name=TestData.FIRST_NAME, last_name=TestData.LAST_NAME)
-    form.contacts.set_email(mail=TestData.EMAIL)
-    form.info.set_gender(gender=TestData.GENDER)
-    form.contacts.set_phone(phone_number=TestData.MOBILE_PHONE)
-    form.info.set_birth_date(day=TestData.DAY_OF_BIRTH,
-                             month=TestData.MONTH_OF_BIRTH,
-                             year=TestData.YEAR_OF_BIRTH)
-    form.info.set_subjects(*TestData.SUBJECTS)
-    form.info.set_hobbies(*TestData.HOBBIES)
-    form.info.set_avatar(avatar=TestData.AVATAR)
-    form.address.set_current(address=TestData.ADDRESS)
-    form.address.set_state(state=TestData.STATE)
-    form.address.set_city(city=TestData.CITY)
-    form.submit()
+    form.profile.set_name(first_name=Profile.FIRST_NAME, last_name=Profile.LAST_NAME)
+    form.contacts.type_email(mail=Contacts.EMAIL)
+    form.profile.select_gender(gender=Profile.GENDER)
+    form.contacts.type_phone(number=Contacts.PHONE)
+    form.profile.select_date_of_birth(date=Birthday)
+    form.profile.set_subjects(*Profile.SUBJECTS)
+    form.profile.select_hobbies(*Profile.HOBBIES)
+    form.profile.upload_avatar(file=Profile.AVATAR)
+    form.address.type_address(current=Address.ADDRESS)
+    form.address.select_state(state=Address.STATE)
+    form.address.select_city(city=Address.CITY)
+    form.submit_button.click()
 
     table = Table(root='.modal-body > .table-responsive > .table')
-    table.rows().should_have(texts(TestData.EXPECTED_NAME,
-                                   TestData.EMAIL,
-                                   TestData.GENDER,
-                                   TestData.MOBILE_PHONE,
-                                   TestData.EXPECTED_DATE_OF_BIRTH,
-                                   TestData.EXPECTED_SUBJECTS,
-                                   TestData.EXPECTED_HOBBIES,
-                                   TestData.EXPECTED_PICTURE,
-                                   TestData.ADDRESS,
-                                   TestData.EXPECTED_STATE_AND_CITY))
+    table.rows().should(have.texts(
+        Expected.NAME,
+        Contacts.EMAIL,
+        Profile.GENDER,
+        Contacts.PHONE,
+        Expected.DATE_OF_BIRTH,
+        Expected.SUBJECTS,
+        Expected.HOBBIES,
+        Expected.PICTURE,
+        Address.ADDRESS,
+        Expected.STATE_AND_CITY
+    ))
+
