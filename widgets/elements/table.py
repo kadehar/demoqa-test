@@ -14,7 +14,7 @@ class Table:
         return self.table.element('tbody')
 
     def rows(self):
-        return self.body().ss('tr')
+        return self.body().all('tr')
 
     def cells(self):
-        return self.body().ss('td')
+        return self.body().all('td')
