@@ -23,8 +23,7 @@ def test_practice_form(open_practice_form):
     form.address.select_city(city=Address.CITY)
     form.submit_button.click()
 
-    table = Table(root='.modal-body > .table-responsive > .table')
-    table.rows().should(have.texts(
+    Table().rows().should(have.texts(
         Expected.NAME,
         Contacts.EMAIL,
         Profile.GENDER,
@@ -36,4 +35,3 @@ def test_practice_form(open_practice_form):
         Address.ADDRESS,
         Expected.STATE_AND_CITY
     ))
-

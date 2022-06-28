@@ -2,7 +2,7 @@ from selene.support.shared import browser
 
 
 class Table:
-    def __init__(self, root):
+    def __init__(self, root='.table'):
         self.table = browser.element(root)
 
     def body(self):
