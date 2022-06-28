@@ -12,7 +12,7 @@ class Profile:
     GENDER = Gender.MALE.value
     SUBJECTS = (Subjects.MATHS, Subjects.ENGLISH)
     HOBBIES = (Hobbies.READING, Hobbies.MUSIC)
-    AVATAR = os.getcwd() + '/pic.jpg'
+    AVATAR = os.getcwd() + '/resources/pic.jpg'
 
 
 class Contacts:
