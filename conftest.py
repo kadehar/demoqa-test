@@ -11,3 +11,5 @@ def setup():
 @pytest.fixture
 def open_practice_form():
     browser.open('https://demoqa.com/automation-practice-form')
+    browser.execute_script(script="document.querySelector('#app > footer').style.display='none'")
+    browser.execute_script(script="document.querySelector('#fixedban').style.display='none'")
