@@ -6,7 +6,10 @@ from widgets.profile import ProfileBlock
 
 class PracticeForm:
     def __init__(self):
-        self.submit_button = Button(element='#submit')
+        """
+        Представляет из себя Practice Form, состоящую из мини-блоков Contacts, Address и Profile
+        """
+        self.submit_button = Button(selector='#submit')
         self.contacts = ContactsBlock()
         self.address = AddressBlock()
         self.profile = ProfileBlock()

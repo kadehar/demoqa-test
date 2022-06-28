@@ -11,6 +11,11 @@ from widgets.elements.radiobutton import RadioButton
 
 
 class ProfileBlock:
+    """
+    Представляет из себя мини-блок формы с полями Name, Gender, Date of Birth,
+    Subjects, Hobbies и Picture
+    """
+
     def select_gender(self, gender):
         RadioButton(text=gender).select()
 
@@ -19,7 +24,7 @@ class ProfileBlock:
             Checkbox(text=hobby.value).select()
 
     def upload_avatar(self, file):
-        FileInput(element='#uploadPicture').upload(file=file)
+        FileInput(selector='#uploadPicture').upload(file=file)
 
     def select_date_of_birth(self, date: Birthday):
         birth_date_picker = DatePicker(day=date.DAY, month=date.MONTH, year=date.YEAR)
@@ -31,11 +36,11 @@ class ProfileBlock:
     def set_subjects(self, *subjects: Subjects):
         subjects_input_container = browser.element('div[class*=value-container]')
         subjects_input_container.should(be.visible).click()
-        subjects_input = InputField(element="#subjectsInput")
+        subjects_input = InputField(selector="#subjectsInput")
 
         for subject in subjects:
             subjects_input.type_and_press_enter(value=subject.value)
 
     def set_name(self, first_name, last_name):
-        InputField(element="input[placeholder='First Name']").type(value=first_name)
-        InputField(element="input[placeholder='Last Name']").type(value=last_name)
+        InputField(selector="input[placeholder='First Name']").type(value=first_name)
+        InputField(selector="input[placeholder='Last Name']").type(value=last_name)

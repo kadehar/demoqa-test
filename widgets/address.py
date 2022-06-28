@@ -4,9 +4,12 @@ from widgets.elements.textarea import Textarea
 
 class AddressBlock:
     def __init__(self):
-        self.current_address = Textarea(element='#currentAddress')
-        self.state = Dropdown(element='#state')
-        self.city = Dropdown(element='#city')
+        """
+        Представляет из себя мини-блок формы с полями Current Address и State and City
+        """
+        self.current_address = Textarea(selector='#currentAddress')
+        self.state = Dropdown(selector='#state')
+        self.city = Dropdown(selector='#city')
 
     def type_address(self, current):
         self.current_address.type(value=current)

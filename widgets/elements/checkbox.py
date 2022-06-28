@@ -4,8 +4,12 @@ from selene.support.shared import browser
 
 class Checkbox:
     def __init__(self, text):
-        self.text = text
+        """
+        Класс-обёртка, позволяющий работать с элементом как с чекбоксом
+
+        :param text: текст, по которому будет найден чекбокс
+        """
+        self.text = f"//*[text()='{text}']"
 
     def select(self):
-        label = f"//label[text()='{self.text}']"
-        browser.element(css_or_xpath_or_by=label).should(be.visible).click()
+        browser.element(css_or_xpath_or_by=self.text).should(be.visible).click()
