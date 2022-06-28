@@ -1,4 +1,3 @@
-from selene.support.conditions.have import texts
 from selene.support.shared import browser
 
 

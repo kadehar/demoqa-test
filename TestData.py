@@ -1,5 +1,7 @@
 import os
 
+from Months import Months
+
 
 class TestData:
     FIRST_NAME = 'John'
@@ -8,7 +10,7 @@ class TestData:
     GENDER = 'Male'
     MOBILE_PHONE = '9999999999'
     DAY_OF_BIRTH = '20'
-    MONTH_OF_BIRTH = '10'  # November
+    MONTH_OF_BIRTH = str(Months.NOVEMBER.value)
     YEAR_OF_BIRTH = '1965'
     SUBJECT_MATHS = 'Maths'
     SUBJECT_ENGLISH = 'English'
