@@ -3,13 +3,14 @@ from selene.support.shared import browser
 
 
 class Checkbox:
-    def __init__(self, text):
+    def __init__(self, root):
         """
         Класс-обёртка, позволяющий работать с элементом как с чекбоксом
 
-        :param text: текст, по которому будет найден чекбокс
+        :param root: корневой элемент, которому принадлежит чекбокс
         """
-        self.text = f"//*[text()='{text}']"
+        self.root = root
 
-    def select(self):
-        browser.element(css_or_xpath_or_by=self.text).should(be.visible).click()
+    def select_by_text(self, text):
+        selector = f"//*[text()='{text}']"
+        browser.element(self.root).should(be.visible).element(selector).click()

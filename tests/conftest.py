@@ -1,5 +1,5 @@
-from selene.support.shared import browser
 import pytest
+from selene.support.shared import browser
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -9,8 +9,8 @@ def setup():
     browser.config.timeout = 10
 
 
-@pytest.fixture
-def open_practice_form():
+@pytest.fixture(scope='session', autouse=True)
+def open_practice_form(setup):
     browser.open('https://demoqa.com/automation-practice-form')
     browser.execute_script(script="document.querySelector('#app > footer').style.display='none'")
     browser.execute_script(script="document.querySelector('#fixedban').style.display='none'")

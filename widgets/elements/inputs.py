@@ -11,7 +11,7 @@ class FileInput:
         """
         self.selector = selector
 
-    def upload(self, file):
+    def upload(self, file: str):
         browser.element(css_or_xpath_or_by=self.selector).type(file)
 
 
